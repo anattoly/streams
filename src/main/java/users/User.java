@@ -3,13 +3,13 @@ package main.java.users;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Users {
+public class User {
 
     private String email;
     private LocalDate loginDate;
     private String team;
 
-    public Users(String email, LocalDate loginDate, String team) {
+    public User(String email, LocalDate loginDate, String team) {
         this.email = email;
         this.loginDate = loginDate;
         this.team = team;
