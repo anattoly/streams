@@ -1,18 +1,17 @@
 package main.java.users;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class User {
 
     private String email;
     private LocalDate loginDate;
-    private String team;
+    private String department;
 
-    public User(String email, LocalDate loginDate, String team) {
+    public User(String email, LocalDate loginDate, String department) {
         this.email = email;
         this.loginDate = loginDate;
-        this.team = team;
+        this.department = department;
     }
 
     public String getEmail() {
@@ -31,11 +30,11 @@ public class User {
         this.loginDate = loginDate;
     }
 
-    public String getTeam() {
-        return team;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setTeam(String team) {
-        this.team = team;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

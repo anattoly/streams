@@ -1,38 +1,54 @@
 package main.java;
 
+import main.java.cinema.MoviePoster;
 import main.java.functional_interface.VerifiInteger;
+import main.java.staff.BoxStaff;
 import main.java.users.DataUsers;
-import main.java.users.User;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-import static main.java.users.DataUsers.t;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        VerifiInteger even = i -> i % 2 == 0;
-        System.out.println(even.verification(99));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        VerifiInteger overHundred = i -> i > 100;
-        System.out.println(overHundred.verification(101));
+        System.out.println("============= Enter number for verification ============");
+        boolean isInt = false;
+        while (!isInt)
+            try {
+                Integer evenInt = Integer.parseInt(reader.readLine());
+                isInt = true;
+                VerifiInteger even = i -> i % 2 == 0;
+                System.out.println(even.verification(evenInt)
+                        ? "You number is even..."
+                        : "You number is not even...");
+                VerifiInteger overHundred = i -> i < 100;
+                System.out.println(overHundred.verification(evenInt)
+                        ? "...but less than a hundred"
+                        : "...and over Hundred!!!");
+            } catch (NumberFormatException | IOException e) {
+                System.out.println("You entered not integer. Please, try again");
+                isInt = false;
+            }
 
+        System.out.println("============= Users who logged in last week =============");
+        DataUsers.getTeamUsers().forEach((k, v) ->
+                System.out.println("Next Users from " + k + " department logged in for the last week: " + v));
 
-        List<User> users = DataUsers.createListUsers();
+        System.out.println("============= Average price of Genre ============");
+        MoviePoster.getAveragePrice().forEach((k, v) ->
+                System.out.println(k + " - " + v));
 
-        Map<String, String> teams = users.stream()
-                .filter(user -> user.getLoginDate().isAfter(LocalDate.now().minusDays(8)))
-                .collect(Collectors.toMap(User::getTeam, User::getEmail, (a1, a2) ->  a1 + ", " + a2));
+        System.out.println("============= Quantity movie for Genre =============");
+        MoviePoster.getQuantityMovieOfGenre().forEach((k, v) ->
+                System.out.println(k + " - " + v));
 
-        //teams.forEach((k, v) -> System.out.println(k + "\n " + v));
-        System.out.println(teams);
-
-
+        System.out.println("============= Protection Things =============");
+        BoxStaff.packFragileThingsInProtective().forEach(System.out::println);
 
     }
 }
