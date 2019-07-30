@@ -2,7 +2,7 @@ package main.java.staff;
 
 import java.util.List;
 
-public class Boxes {
+class Boxes {
 
     private String name;
     private List<Thing> things;
@@ -12,19 +12,7 @@ public class Boxes {
         this.things = things;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     List<Thing> getThings() {
         return things;
-    }
-
-    public void setThings(List<Thing> things) {
-        this.things = things;
     }
 }

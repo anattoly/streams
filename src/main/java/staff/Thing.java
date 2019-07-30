@@ -10,20 +10,8 @@ public class Thing {
         this.fragile = fragile;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     boolean getFragile() {
         return fragile;
-    }
-
-    public void setFragile(boolean fragile) {
-        this.fragile = fragile;
     }
 
     @Override

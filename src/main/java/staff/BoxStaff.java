@@ -30,5 +30,4 @@ public class BoxStaff {
                 .map(Protector::new)
                 .collect(Collectors.toList());
     }
-
 }
